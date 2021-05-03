@@ -2,12 +2,13 @@ import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
   
-  html, body {
+html, body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 } 
+
 body {
   background: repeat url('/background.svg');
   background-color: ${props => props.theme.colors.turquesa};
@@ -15,14 +16,17 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top: calc(8vh + 2.05em);
+  padding-bottom: 3.78vh;
 }
+
 
 a {
   color: inherit;
-  text-decoration: none;
 }
 
 * {
   box-sizing: border-box;
 }
+
 `

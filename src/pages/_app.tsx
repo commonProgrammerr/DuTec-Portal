@@ -1,7 +1,9 @@
-import Header from "../components/Header"
-import { GlobalStyle } from "../styles/GlobalStyle"
-import { defaultTheme } from '../styles/theme'
 import { ThemeProvider } from 'styled-components'
+
+import Header from "../components/Header"
+import { defaultTheme } from '../styles/theme'
+import { GlobalStyle } from "../styles/GlobalStyle"
+
 function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider theme={defaultTheme}>

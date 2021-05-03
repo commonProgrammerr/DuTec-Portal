@@ -1,4 +1,5 @@
 import Document, { Head, Html, Main, NextScript } from 'next/document';
+
 // Import styled components ServerStyleSheet
 import { ServerStyleSheet } from 'styled-components';
 
@@ -24,6 +25,7 @@ export default class MyDocument extends Document {
       <Html>
         <Head>
           <title>DuTec</title>
+          <link rel="shortcut icon" href="/static/favicon.ico" />
           {/* Step 5: Output the styles in the head  */}
           {this.props.styleTags}
         </Head>

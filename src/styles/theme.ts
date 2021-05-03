@@ -7,6 +7,8 @@ export const defaultTheme = {
     turquesa: '#44B9B6',
     azulEscuro: '#2F2A70',
     azulClaro: '#56AAEF',
-    branco: '#ffffff'
+    branco: '#ffffff',
+    preto: '#000000',
+    red: 'red'
   },
 }
