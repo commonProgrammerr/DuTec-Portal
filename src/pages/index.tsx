@@ -21,13 +21,21 @@ export default function Home() {
         </Section>
       </div>
       <div>
-        <Subtitulo> Faça parte: </Subtitulo>
+        <Subtitulo style={{alignSelf: 'flex-end'}}> Faça parte: </Subtitulo>
         <FormContainer>
           <p>
-            <MarkedText> Atualmente o software Dutec está em sua etapa final de desenvolvimento. Se você deseja testar nosso produto, preencha o formulario ao lado com as informações requerias e entraremos em contato com você em breve! </MarkedText>
+            <MarkedText> Atualmente o software Dutec está em sua etapa final de desenvolvimento. Se você deseja testar nosso produto, preencha o formulário ao lado com as informações requeridas, clique no botão de enviar e entraremos em contato com você em breve! </MarkedText>
           </p>
           <Form onSubmit={handleSubmit}>
-            <Input name="email" label="Email" />
+            <Input name="name" type="text" label="Nome Completo" />
+            <Input name="email" type="email" label="Email" />
+            <section>
+              <Input name="UF" type="uf" width="5.3125em" label="UF" />
+              <Input name="cidade" type="text" label="Cidade" />
+            </section>
+            <Input name="escola" type="text" label="Instituição de ensino" />
+
+            <input type="submit"/>
           </Form>
         </FormContainer>
       </div>

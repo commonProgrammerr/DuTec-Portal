@@ -44,7 +44,7 @@ export const Section = styled.section`
   }
 `
 
-export const MarkedText = styled.mark `
+export const MarkedText = styled.mark`
   font-size: 1.54em;
   line-height: 1.64em;
   text-align: justify; 
@@ -86,14 +86,40 @@ export const FormContainer = styled.div`
 export const Form = styled(form)`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: stretch;
+  gap: 10px;
   width: 100%;
   min-width: 260px;
-  padding: 0.7em;
-  height: 234px;
+  padding: 1.53em 2em;
   overflow: hidden;
   background-color: ${props => props.theme.colors.azulEscuro};
   border-radius: 0.3em;
+
+  * {
+    margin: 0;
+  }
+
+  & > section {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    align-items: flex-end;
+    gap: 0.83em;
+  }
+
+  input[type="submit"] {
+    border: 0;
+    height: 2.7em;
+    width: 100%;
+    padding: 0 2em;
+    font-size: 1.24em;
+    border-radius: 0.28em;
+    font-weight: 700;
+    margin-top: 1.23em;
+    align-self: center;
+    color: ${props => props.theme.colors.azulEscuro};
+    background: ${props => props.theme.colors.turquesa};
+    cursor: pointer;
+  }
 
 `
