@@ -98,7 +98,7 @@ export default function Home() {
             <Input name="name" label="Nome Completo" />
             <Input name="email" type="email" label="Email" />
             <section>
-              <Input name="UF" width="5.3125em" label="UF" />
+              <Input name="UF" width="31%" label="UF" />
               <Input name="cidade" label="Cidade" />
             </section>
             <Input name="escola" label="Instituição de ensino" />

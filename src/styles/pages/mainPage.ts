@@ -14,7 +14,16 @@ export const MainPageContainer = styled.div`
   box-shadow: 0px 0px 15px rgb( 0, 0, 0, 0.6);
   border-radius: 0.276em;
   align-items: stretch;
- 
+  
+  @media only screen and (max-width: 1000px) {
+    font-size: 0.82em;
+  }
+  @media only screen and (max-width: 825px) {
+    font-size: 0.7em;
+  }
+  @media only screen and (max-width: 600px) {
+    font-size: 0.65em;
+  }
 `
 
 export const Section = styled.section`
@@ -23,7 +32,6 @@ export const Section = styled.section`
   width: 100%;
   max-width: 78vw;
   
-
   .apresentation-card {
     width: 52%;
     min-width: 28em;
@@ -40,6 +48,19 @@ export const Section = styled.section`
   div {
     width: 48%;
     display: flex;
+  }
+
+  @media only screen and (max-width: 1000px) {
+    flex-direction: column;
+    .apresentation-card {
+      min-width:  10em;
+      width: 100%;
+    };
+
+    div {
+      width: 100%;
+      min-width:  10em;
+    }
   }
 `
 
@@ -75,9 +96,13 @@ export const FormContainer = styled.div`
   grid-template-columns: minmax(62%, 1fr) minmax(120px, 1fr);
   gap: 1.2em;
   
-
   p {
     text-align: justify;
+  }
+
+  @media only screen and (max-width: 1000px) {
+    display: flex;
+    flex-direction: column;
   }
 `
 
