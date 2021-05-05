@@ -17,12 +17,10 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   hint?: string
 }
 
-
 function Input({
   name,
   label,
   hint,
-  type,
   ...rest
 }: InputProps) {
   const inputRef = useRef<HTMLInputElement>(null)
@@ -35,10 +33,7 @@ function Input({
   } = useField(name)
 
   const [isFocused, setIsFocused] = useState(false)
-  const [isVisible, setIsVisible] = useState(false)
-  const handlechageVisibility = useCallback(() => setIsVisible(!isVisible), [
-    isVisible
-  ])
+
   useEffect(() => {
     if (inputRef.current) {
       registerField({
@@ -51,7 +46,6 @@ function Input({
 
   const handleInputFocus = useCallback(() => {
     setIsFocused(true)
-
     clearError()
   }, [clearError])
 
@@ -61,13 +55,11 @@ function Input({
 
   return (
     <Container {...rest}>
-      <TitleContainer isFocused={isFocused} isErrored={!!error && !hint}>
+      <TitleContainer isFocused={isFocused} isErrored={!!error}>
         {label && <label>{label}</label>}
-        {(hint || error) && <small>{error || hint}</small>}
       </TitleContainer>
 
       <InputContainer
-      
         isFocused={isFocused}
         isErrored={!!error}
         onFocus={handleInputFocus}
@@ -77,17 +69,11 @@ function Input({
           defaultValue={defaultValue}
           placeholder={!error ? rest.placeholder : 'Campo obrigatório!'}
           ref={inputRef}
-          type={type !== 'password' ? type : isVisible ? 'text' : 'password'}
+          name={fieldName}
           onBlur={handleInputBlur}
         />
 
         {!!error && <FiAlertCircle className="error" />}
-        {!!(type === 'password') &&
-          (isVisible ? (
-            <FiEyeOff onClick={handlechageVisibility} />
-          ) : (
-            <FiEye onClick={handlechageVisibility} />
-          ))}
       </InputContainer>
     </Container>
   )

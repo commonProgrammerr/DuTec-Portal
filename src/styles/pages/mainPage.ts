@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Form as form } from '@unform/web'
 
 export const MainPageContainer = styled.div`
@@ -9,8 +9,7 @@ export const MainPageContainer = styled.div`
   min-width: 62vw;
   width: 78vw;
   gap: 1.6em;
-  padding: 0 2.6em;
-  min-height: 140vh;
+  padding: 2.6em;
   background: ${props => props.theme.colors.preto};
   box-shadow: 0px 0px 15px rgb( 0, 0, 0, 0.6);
   border-radius: 0.276em;
@@ -83,7 +82,7 @@ export const FormContainer = styled.div`
 `
 
 
-export const Form = styled(form)`
+export const Form = styled(form)<{ isLoading?: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -119,7 +118,32 @@ export const Form = styled(form)`
     align-self: center;
     color: ${props => props.theme.colors.azulEscuro};
     background: ${props => props.theme.colors.turquesa};
-    cursor: pointer;
+    transition: border background 0.2s;
+    
+    ${props => props.isLoading && css`
+      animation: loading linear infinite;
+      animation-duration: 1.2s;
+    `}
+    
+    :hover{
+      cursor: pointer;
+      background-color: ${props => props.theme.colors.branco};
+      
+    }
   }
 
+  @keyframes loading {
+    ${props => {
+      let out = ''
+      const turquesa = props.theme.colors.turquesa
+      const branco = props.theme.colors.branco
+      for (let i = 0; i <= 50; i++) {
+        out = out + `${i}% { background: linear-gradient(90deg, ${branco} ${i*2}%, ${turquesa} ${i * 6}%);}`
+      }
+      for (let i = 0; i <= 50; i++) {
+        out = out + `${i + 50}% { background: linear-gradient(90deg, ${turquesa} ${i*2}%, ${branco} ${i * 6}%);}`
+      }
+      return css`${props => out}`
+    }}
+  }
 `

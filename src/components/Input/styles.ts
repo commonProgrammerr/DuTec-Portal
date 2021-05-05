@@ -43,38 +43,20 @@ export const TitleContainer = styled.div<InputContainerProps>`
   display: flex;
   flex-direction: row;
   align-items: flex-end;
-  /* margin-bottom: 8px; */
-
-  small {
-    font-size: 0.6875em;
-    line-height: 0.8125em;
-    margin-left: 0.5em;
-    ${props =>
-    props.isErrored &&
-    css`
-        width: 100%;
-        text-align: right;
-        margin-bottom: 1px;
-        color: ${props => props.theme.colors.red} !important;
-      `
-  }
-  }
 
   label {
     display: block;
-    ${props =>
-    props.isFocused ?
-      css`
-        color: ${props => props.theme.colors.turquesa};
-      ` : css`
-      color: ${props => props.theme.colors.azulClaro}B0;
-      `} 
     font-size: 0.9em;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 1.3em;
     letter-spacing: 0em;
     text-align: left;
-
+ 
+    color: ${props => props.isErrored ? props.theme.colors.branco + '99' : props.isFocused
+    ? props.theme.colors.turquesa
+    : props.theme.colors.azulClaro + 'B0'
+  };
+    
   }
 `
 
@@ -84,10 +66,9 @@ export const InputContainer = styled.span<InputContainerProps>`
 
   height: 2.625em;
   border-radius: 0.28em;
-  /* background: ${props => props.theme.colors.branco}; */
   border: 3px solid ${props => props.theme.colors.azulClaro}40;
 
-  padding: 0 1em;
+  padding: 0 0.5em;
 
   transition: border 0.2s;
 
@@ -100,20 +81,32 @@ export const InputContainer = styled.span<InputContainerProps>`
 
     &.error {
       cursor: default;
-      color: ${props => props.theme.colors.red};
+      color: ${props => props.theme.colors.branco}A9;
     }
   }
-  ${props =>
-    props.isErrored &&
-    css`
-      border-color: ${props => props.theme.colors.red} !important;
-    `}
 
   ${props =>
     props.isFocused &&
     css`
       border: 3px solid ${props => props.theme.colors.turquesa};
-      /* background-color: ${props => props.theme.colors.branco}; */
       outline: 0;
     `}
+
+  ${props =>
+    props.isErrored &&
+    css`
+      border: 1.6px solid ${props => props.theme.colors.branco}99 !important;
+      input {
+        color: ${props => props.theme.colors.branco}99 !important;
+      ::placeholder {
+        color: ${props => props.theme.colors.branco}99 !important;
+        font-weight: 500;
+        font-size: 0.688em;
+        text-anchor: middle;
+        align-self: center;
+        justify-self: center;
+      }
+      }
+    `}
+
 `

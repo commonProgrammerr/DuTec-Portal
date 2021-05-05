@@ -8,7 +8,6 @@ export const defaultTheme = {
     azulEscuro: '#2F2A70',
     azulClaro: '#56AAEF',
     branco: '#ffffff',
-    preto: '#000000',
-    red: 'red'
+    preto: '#000000'
   },
 }
