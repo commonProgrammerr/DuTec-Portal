@@ -15,6 +15,10 @@ export const MainPageContainer = styled.div`
   border-radius: 0.276em;
   align-items: stretch;
   font-size: 0.914em;
+
+  * {
+    color: ${props => props.theme.colors.branco};
+  }
   
   @media only screen and (max-width: 1000px) {
     font-size: 0.802em;
