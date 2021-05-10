@@ -5,14 +5,14 @@ export const GlobalStyle = createGlobalStyle`
 html, body {
   padding: 0;
   margin: 0;
-  
-} 
+}
 
 body {
   background: repeat url('/background.svg');
   background-color: ${props => props.theme.colors.turquesa};
   background-size: 40vh;
   display: flex;
+  min-width: 370px;
   justify-content: center;
   align-items: center;
   padding-top: calc(8vh + 2.05em);

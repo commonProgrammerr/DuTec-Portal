@@ -6,7 +6,7 @@ export const MainPageContainer = styled.div`
   overflow: hidden;
   flex-direction: column;
   max-width: 88vw;
-  min-width: 62vw;
+  min-width: 340px;
   width: 78vw;
   gap: 1.6em;
   padding: 2.6em;
@@ -14,12 +14,13 @@ export const MainPageContainer = styled.div`
   box-shadow: 0px 0px 15px rgb( 0, 0, 0, 0.6);
   border-radius: 0.276em;
   align-items: stretch;
+  font-size: 0.914em;
   
   @media only screen and (max-width: 1000px) {
-    font-size: 0.82em;
+    font-size: 0.802em;
   }
   @media only screen and (max-width: 825px) {
-    font-size: 0.7em;
+    font-size: 0.697em;
   }
   @media only screen and (max-width: 600px) {
     font-size: 0.65em;
@@ -39,6 +40,7 @@ export const Section = styled.section`
     object-fit: cover;
     border-radius: 0.276em;
   }
+  
   p {
     align-self: center;
     margin: 0;
@@ -49,9 +51,13 @@ export const Section = styled.section`
     width: 48%;
     display: flex;
   }
+    object-fit: cover;
 
   @media only screen and (max-width: 1000px) {
     flex-direction: column;
+    align-items: stretch;
+    padding: 0;
+    margin: 0;
     .apresentation-card {
       min-width:  10em;
       width: 100%;
@@ -60,6 +66,9 @@ export const Section = styled.section`
     div {
       width: 100%;
       min-width:  10em;
+      mark {
+        width: 100%;
+      }
     }
   }
 `
@@ -67,7 +76,6 @@ export const Section = styled.section`
 export const MarkedText = styled.mark`
   font-size: 1.54em;
   line-height: 1.64em;
-  text-align: justify; 
   color: ${props => props.theme.colors.azulEscuro};
   padding: 0 0.38em;
   background-color: ${props => props.theme.colors.turquesa};
@@ -81,6 +89,10 @@ export const MarkedText = styled.mark`
     color: ${props => props.theme.colors.branco} !important;
     font-weight: 600;
     font-style: italic;
+  }
+
+  @media only screen and (max-width: 600px) {
+    font-size: 1.4em;
   }
 `
 
@@ -103,17 +115,21 @@ export const FormContainer = styled.div`
   @media only screen and (max-width: 1000px) {
     display: flex;
     flex-direction: column;
+    form {
+      align-self: center;
+    }
   }
 `
 
 
-export const Form = styled(form)<{ isLoading?: boolean }>`
+export const Form = styled(form) <{ isLoading?: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: stretch;
   gap: 10px;
   width: 100%;
   min-width: 260px;
+  max-width: 360px;
   padding: 1.53em 2em;
   overflow: hidden;
   background-color: ${props => props.theme.colors.azulEscuro};
@@ -159,16 +175,16 @@ export const Form = styled(form)<{ isLoading?: boolean }>`
 
   @keyframes loading {
     ${props => {
-      let out = ''
-      const turquesa = props.theme.colors.turquesa
-      const branco = props.theme.colors.branco
-      for (let i = 0; i <= 50; i++) {
-        out = out + `${i}% { background: linear-gradient(90deg, ${branco} ${i*2}%, ${turquesa} ${i * 6}%);}`
-      }
-      for (let i = 0; i <= 50; i++) {
-        out = out + `${i + 50}% { background: linear-gradient(90deg, ${turquesa} ${i*2}%, ${branco} ${i * 6}%);}`
-      }
-      return css`${props => out}`
-    }}
+    let out = ''
+    const turquesa = props.theme.colors.turquesa
+    const branco = props.theme.colors.branco
+    for (let i = 0; i <= 50; i++) {
+      out = out + `${i}% { background: linear-gradient(90deg, ${branco} ${i * 2}%, ${turquesa} ${i * 6}%);}`
+    }
+    for (let i = 0; i <= 50; i++) {
+      out = out + `${i + 50}% { background: linear-gradient(90deg, ${turquesa} ${i * 2}%, ${branco} ${i * 6}%);}`
+    }
+    return css`${props => out}`
+  }}
   }
 `

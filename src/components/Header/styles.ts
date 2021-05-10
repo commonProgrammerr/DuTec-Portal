@@ -4,7 +4,7 @@ export const Container = styled.header`
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
   z-index: 999;
   height: 5.5vh;
   background-color: ${props => props.theme.colors.preto};

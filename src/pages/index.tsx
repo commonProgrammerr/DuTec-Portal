@@ -3,6 +3,7 @@ import { useCallback, useRef, useState } from 'react'
 import Input from '../components/Input'
 import { MainPageContainer, Section, Subtitulo, Form, FormContainer, MarkedText } from '../styles/pages/mainPage'
 import * as Yup from 'yup'
+import { APIResponse } from './api/send'
 
 interface FormData {
   name: string
@@ -30,11 +31,11 @@ export default function Home() {
   const formRef = useRef<FormHandles>(null)
   const [isLoading, setIsLoading] = useState(false)
 
-  const handleSubmit = useCallback<SubmitHandler<FormData>>(async (data, helpers, event) => {
+  const handleSubmit: SubmitHandler<FormData> = async (data, helpers, event) => {
     try {
       event.preventDefault()
       formRef.current?.setErrors({})
-      
+
       const schema = Yup.object().shape({
         name: Yup.string().required(),
         email: Yup.string().email().required(),
@@ -44,7 +45,7 @@ export default function Home() {
       })
       setIsLoading(true)
       await schema.validate(data, { abortEarly: false })
-      
+
       const response = await fetch('/api/send', {
         method: 'POST',
         headers: {
@@ -53,15 +54,20 @@ export default function Home() {
         },
         body: JSON.stringify(data)
       })
-      const respData = await response.json()
-      
+      console.log(response)
+      const respData = await response.json() as APIResponse
+
       if (response.status !== 200) {
-        const err = respData as Error
-        window.alert(err.message)
+
+        console.error(new Error(respData.message))
+        window.alert(respData.message)
+
       } else {
+
         helpers.reset()
+        window.alert('Concluido!')
       }
-      
+
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
         console.error(err)
@@ -73,7 +79,7 @@ export default function Home() {
     } finally {
       setIsLoading(false)
     }
-  }, [])
+  }
 
   return (
     <MainPageContainer>
@@ -107,7 +113,7 @@ export default function Home() {
           </Form>
         </FormContainer>
       </div>
-      <section></section>
+      <br/>
     </MainPageContainer>
   )
 }
