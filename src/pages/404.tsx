@@ -8,7 +8,6 @@ export default function FourOhFour() {
     <MainPageContainer>
       <ImageContainer>
         <img src="/not-found.svg" alt="" />
-        <h1>Page Not Found</h1>
         <Link href="/">
           <mark> Go back home </mark>
         </Link>
