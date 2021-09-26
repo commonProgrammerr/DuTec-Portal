@@ -19,6 +19,10 @@ export const MainPageContainer = styled.div`
   * {
     color: ${props => props.theme.colors.branco};
   }
+
+  img, form {
+    box-shadow: 0 0 2px 0.1px ${props => props.theme.colors.turquesa}A0;
+  }
   
   @media only screen and (max-width: 1000px) {
     font-size: 0.802em;
